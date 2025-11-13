@@ -1,3 +1,39 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Godot import files
+*.import
+*.uid
+
+# Sensitive configuration files
+config.ini
+*.ini
+!config.ini.example
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Test and temporary files
+test_*.py
+*.pyc
+__pycache__/
+
+# Logs
+*.log
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build outputs
+*.exe
+*.pck
+*.zip
+*.dmg
+*.app

@@ -1,21 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://buepkdvbrg8g2"]
+[gd_scene load_steps=5 format=3 uid="uid://buepkdvbrg8g2"]
 
 [ext_resource type="Script" uid="uid://ccjkh4lbgygj2" path="res://main.gd" id="1_x7k8v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
-bg_color = Color(0.1, 0.12, 0.15, 0.95)
+bg_color = Color(0.1, 0.12, 0.15, 0.15)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.2, 0.6, 1, 0.5)
+border_color = Color(0.2, 0.6, 1, 0.2)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
-shadow_color = Color(0, 0, 0, 0.6)
+shadow_color = Color(0, 0, 0, 0.3)
 shadow_size = 10
 shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2"]
+bg_color = Color(0.2, 0.2, 0.25, 0.8)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3"]
+bg_color = Color(0.2, 1, 0.4, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -28,70 +42,50 @@ script = ExtResource("1_x7k8v")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -100.0
-offset_right = 150.0
-offset_bottom = 100.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="Content" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 12
+alignment = 1
 
-[node name="Title" type="Label" parent="Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.4, 0.8, 1, 1)
-theme_override_font_sizes/font_size = 14
-text = "⚡ AUGMENT GAUGE"
-horizontal_alignment = 1
-
-[node name="RemainingLabel" type="Label" parent="Panel/VBoxContainer"]
+[node name="PercentLabel" type="Label" parent="Panel/Content"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 1, 0.4, 1)
-theme_override_font_sizes/font_size = 32
-text = "670,199"
+theme_override_font_sizes/font_size = 48
 horizontal_alignment = 1
 
-[node name="SubLabel" type="Label" parent="Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
-theme_override_font_sizes/font_size = 10
-text = "Units Remaining"
-horizontal_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="Panel/VBoxContainer"]
-custom_minimum_size = Vector2(240, 20)
+[node name="ProgressBar" type="ProgressBar" parent="Panel/Content"]
+custom_minimum_size = Vector2(280, 28)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3")
 max_value = 1.0
-value = 0.89
+value = 0.0
 show_percentage = false
 
-[node name="UsageLabel" type="Label" parent="Panel/VBoxContainer"]
+[node name="RatioLabel" type="Label" parent="Panel/Content"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
-theme_override_font_sizes/font_size = 10
-text = "Used: 84,701 / 754,900"
+theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 
-[node name="StatusLabel" type="Label" parent="Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
-theme_override_font_sizes/font_size = 9
-text = "Updating..."
-horizontal_alignment = 1
+
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
